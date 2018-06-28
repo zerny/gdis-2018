@@ -74,10 +74,12 @@ The chain is called "augmenting" because we can use it to improve our current so
 by one edge. We do that by inverting the pairing status of every edge on the chain.
 That leads to the following algorithm:
 
-**Algorithm** maxPairing(graph):
-  **while** graph has chain
+```
+maxPairing(graph):
+  while graph has chain
     invert chain
-  **return** edges in graph marked as part of pairing
+  return edges in graph marked as part of pairing
+```
 
 Efficiency concerns will often lead us to prefer one algorithm over another one. We'll
 look at the relative efficiency of our two algorithms and talk about exponential (2ⁿ)
