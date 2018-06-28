@@ -39,6 +39,7 @@ eksempler.
 
 **Opgave 1** Ret koden, så det at være kræsen i stedet betyder, at der højst er
 to kjoler, man vil danse med. Gem ændringen og afprøv koden på nogle eksempler.
+
 **Opgave 2** Ret koden, så det at være kræsen i stedet betyder, at der er én
 eller to kjoler, man vil danse med. I koden skriver man `==` for at teste om to
 værdier er ens (og `!=` for at teste, om de er forskellige -- det skal vi bruge
