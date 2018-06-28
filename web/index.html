@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<!--
+  Copyright (c) 2017, kasperl. All rights reserved. Use of this source code
+  is governed by a BSD-style license that can be found in the LICENSE file.
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="scaffolded-by" content="https://github.com/google/stagehand">
+  <title>GDIS'17</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico">
+  <script defer src="main.dart.js"></script>
+  <script src="d3.min.js"></script>
+  <script src="d3plus.full.min.js"></script>
+
+  <script>
+    var viz;
+
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&#]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    function stripParameters(url) {
+      if (!url) url = window.location.href;
+      var index = url.indexOf('?');
+      return index < 0 ? url : url.substring(0, index);
+    }
+
+    function changeGraphSelection() {
+      if (graphIndex == graphSelection.value) return;
+      updateHref();
+    }
+
+    function changeAlgorithmSelection() {
+      if (algorithmIndex == algorithmSelection.value) return;
+      algorithmIndex = Number(algorithmSelection.value);
+      updateHref();
+    }
+
+    function updateHref() {
+      window.location.href = stripParameters() + "?graph=" + graphSelection.value + "#algorithm=" + algorithmSelection.value;
+    }
+
+    function visualizeError(error) {
+      var element = document.getElementById('error');
+      element.textContent = 'Error: ' + error;
+      element.style.display = error ? 'block' : 'none';
+    }
+
+    function visualizeGraph(nodes, edges) {
+      var nodes = JSON.parse(nodes);
+      var edges = JSON.parse(edges);
+      if (!viz) {
+        viz = d3plus.viz();
+        viz.type('network')
+           .container('#viz')
+           .color('color')
+           .labels(false)
+           .icon('img')
+           .legend(false);
+      }
+      viz.data(nodes)
+         .nodes(nodes)
+         .edges(edges)
+         .edges({
+           color: function(e) {
+             return e.selected ? 'green' : 'gray';
+           },
+           opacity: function(e) {
+             return (e.selected || e.onChain) ? 1.0 : 0.3;
+           },
+           size: {
+             value: 'width',
+             scale: 0.15,
+             min: 3
+           }
+         })
+         .draw();
+    }
+
+    var graphIndex = Number(getParameterByName('graph') || 0);
+    var algorithmIndex = Number(getParameterByName('algorithm') || 0);
+    document.addEventListener('DOMContentLoaded', function() {
+      graphSelection.value = graphIndex;
+      algorithmSelection.value = algorithmIndex;
+    });
+  </script>
+
+</head>
+
+<body>
+<div id="viz"></div>
+<div id="control-panel">
+  <div id="graph-panel">
+    <select id="graphSelection" onchange="changeGraphSelection()">
+      <option value="0">Graph: Random XS</option>
+      <option value="1">Graph: Random S</option>
+      <option value="2">Graph: Random M</option>
+      <option value="3">Graph: Random L</option>
+      <option value="4">Graph: Random XL</option>
+      <option value="5">Graph: Some teachers</option>
+      <option value="6">Graph: All teachers</option>
+    </select>
+  </div>
+  <div id="algorithm-panel">
+    <select id="algorithmSelection" onchange="changeAlgorithmSelection()">
+      <option value="0">Algorithm: Picky suits</option>
+      <option value="1">Algorithm: Popular dresses</option>
+      <option value="2">Algorithm: Rivals of first suit</option>
+      <option value="3">Algorithm: Rivals of first dress</option>
+      <option value="4">Algorithm: Maximal pairing</option>
+      <option value="5">Algorithm: Maximal pairing (naive)</option>
+    </select>
+    <div id="run-panel">
+      <button id="run">Run</button>
+      <span id="stepCounter"></span>
+    </div>
+    <div id="debug-panel">
+      <button id="goToStart">&lt;&lt;</button>
+      <button id="stepBackward">&lt;</button>
+      <button id="stepForward">&gt;</button>
+      <button id="goToEnd">&gt;&gt;</button>
+    </div>
+    <div id="play-panel">
+      <button id="play">&#9656;</button>
+      <button id="stop">&#9632;</button>
+    </div>
+    <div id="error"></div>
+  </div>
+</div>
+
+</body>
+</html>

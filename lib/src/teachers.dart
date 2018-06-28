@@ -1,0 +1,621 @@
+class Teacher implements Comparable<Teacher> {
+  final String name;
+  final String picture;
+  final List<String> subjects;
+  final int height;
+  final bool lefthanded;
+  final int popularity;
+  Teacher({this.name, this.picture, this.subjects, this.height, this.lefthanded, this.popularity});
+
+  String toString() => name;
+  int compareTo(Teacher other) => name.compareTo(other.name);
+}
+
+bool sharesSubject(Teacher a, Teacher b) {
+  for (String subject in a.subjects) {
+    if (b.subjects.contains(subject)) return true;
+  }
+  return false;
+}
+
+bool canDance(Teacher male, Teacher female) {
+    if (!sharesSubject(male, female)) return false;
+    if ((male.popularity - female.popularity).abs() > 2) return false;
+    if (male.height < female.height) return false;
+    if (male.lefthanded != female.lefthanded) return false;
+    return true;
+}
+
+// -----------------------------------------------------------------------------
+
+final Ane = new Teacher(name: "Ane Sloth Nørager",
+    picture: "pictures/Ane.jpg",
+    subjects: ["latin", "oldtidskundskab", "religion"],
+    height: 173,
+    lefthanded: false,
+    popularity: 2);
+final Anette = new Teacher(name: "Anette Halager",
+    picture: "pictures/Anette.jpg",
+    subjects: ["dansk", "engelsk"],
+    height: 170,
+    lefthanded: false,
+    popularity: 5);
+final AnneG = new Teacher(name: "Anne Gamborg Ørum",
+    picture: "pictures/AnneG.jpg",
+    subjects: ["engelsk", "musik"],
+    height: 176,
+    lefthanded: false,
+    popularity: 3);
+final AnneM = new Teacher(name: "Anne Munk Højte",
+    picture: "pictures/AnneM.jpg",
+    subjects: ["erhvervsøkonomi", "historie", "innovation", "samfundsfag"],
+    height: 166,
+    lefthanded: true,
+    popularity: 3);
+final AnneTS = new Teacher(name: "Anne Tanggaard Schmidt",
+    picture: "pictures/AnneTS.jpg",
+    subjects: ["psykologi", "dansk"],
+    height: 160,
+    lefthanded: false,
+    popularity: 7);
+final Astrid = new Teacher(name: "Astrid Midtgaard Hvelplund",
+    picture: "pictures/Astrid.jpg",
+    subjects: ["dansk"],
+    height: 180,
+    lefthanded: false,
+    popularity: 4);
+final Axel = new Teacher(name: "Axel Rahbech Pedersen",
+    picture: "pictures/Axel.jpg",
+    subjects: ["dansk", "matematik"],
+    height: 191,
+    lefthanded: true,
+    popularity: 6);
+final Benny = new Teacher(name: "Benny Klaris Madsen",
+    picture: "pictures/Benny.jpg",
+    subjects: ["fysik", "matematik"],
+    height: 171,
+    lefthanded: false,
+    popularity: 1);
+final Birger = new Teacher(name: "Birger Wedendahl",
+    picture: "pictures/Birger.jpg",
+    subjects: ["idræt", "geografi"],
+    height: 195,
+    lefthanded: false,
+    popularity: 9);
+final Birgit = new Teacher(name: "Birgit Grunnet",
+    picture: "pictures/Birgit.jpg",
+    subjects: ["dansk", "oldtidskundskab", "religion"],
+    height: 161,
+    lefthanded: false,
+    popularity: 10);
+final Birgitte = new Teacher(name: "Birgitte Rasmussen",
+    picture: "pictures/Birgitte.jpg",
+    subjects: ["engelsk", "spansk"],
+    height: 161,
+    lefthanded: false,
+    popularity: 4);
+final Bjarne = new Teacher(name: "Bjarne Aagaard",
+    picture: "pictures/Bjarne.jpg",
+    subjects: ["fysik", "matematik"],
+    height: 197,
+    lefthanded: false,
+    popularity: 7);
+final Boline = new Teacher(name: "Boline Albæk Ravn",
+    picture: "pictures/Boline.jpg",
+    subjects: ["biologi", "dansk"],
+    height: 163,
+    lefthanded: false,
+    popularity: 3);
+final Britta = new Teacher(name: "Britta Neumann",
+    picture: "pictures/Britta.jpg",
+    subjects: ["religion", "tysk"],
+    height: 168,
+    lefthanded: false,
+    popularity: 10);
+final ChristinaB = new Teacher(name: "Christina Blach Hansen",
+    picture: "pictures/ChristinaB.jpg",
+    subjects: ["matematik", "samfundsfag"],
+    height: 179,
+    lefthanded: true,
+    popularity: 8);
+final ChristinaTE = new Teacher(name: "Christina Thisted Eriksen",
+    picture: "pictures/ChristinaTE.jpg",
+    subjects: ["idræt", "matematik"],
+    height: 179,
+    lefthanded: true,
+    popularity: 5);
+final Claus = new Teacher(name: "Claus Vestergaard Sørensen",
+    picture: "pictures/Claus.jpg",
+    subjects: ["filosofi", "oldtidskundskab", "samfundsfag"],
+    height: 186,
+    lefthanded: false,
+    popularity: 5);
+final David = new Teacher(name: "David Kyng",
+    picture: "pictures/David.jpg",
+    subjects: ["historie", "samfundsfag"],
+    height: 196,
+    lefthanded: false,
+    popularity: 1);
+final Ditte = new Teacher(name: "Ditte Schmidt Jeppesen",
+    picture: "pictures/Ditte.jpg",
+    subjects: ["samfundsfag", "idræt"],
+    height: 172,
+    lefthanded: false,
+    popularity: 9);
+final Ellen = new Teacher(name: "Ellen Holmgaard Jørgensen",
+    picture: "pictures/Ellen.jpg",
+    subjects: ["dansk"],
+    height: 175,
+    lefthanded: false,
+    popularity: 5);
+final GitteAO = new Teacher(name: "Gitte Ahlers Olsen",
+    picture: "pictures/GitteAO.jpg",
+    subjects: ["biologi", "idræt"],
+    height: 163,
+    lefthanded: false,
+    popularity: 3);
+final GitteJ = new Teacher(name: "Gitte Jensen",
+    picture: "pictures/GitteJ.jpg",
+    subjects: ["matematik"],
+    height: 170,
+    lefthanded: true,
+    popularity: 6);
+final HanneAI = new Teacher(name: "Hanne Aae Iversen",
+    picture: "pictures/HanneAI.jpg",
+    subjects: ["billedkunst", "dansk", "musik"],
+    height: 174,
+    lefthanded: false,
+    popularity: 2);
+final HanneOI = new Teacher(name: "Hanne Overgaard Ingvardsen",
+    picture: "pictures/HanneOI.jpg",
+    subjects: ["dansk", "mediefag"],
+    height: 164,
+    lefthanded: true,
+    popularity: 2);
+final HansOS = new Teacher(name: "Hans Oluf Schou",
+    picture: "pictures/HansOS.jpg",
+    subjects: ["fysik", "kemi"],
+    height: 179,
+    lefthanded: false,
+    popularity: 9);
+final HansSJ = new Teacher(name: "Hans Svankjær Jacobsen",
+    picture: "pictures/HansSJ.jpg",
+    subjects: ["engelsk", "musik"],
+    height: 182,
+    lefthanded: false,
+    popularity: 8);
+final HansURE = new Teacher(name: "Hans Ulrik Ringstrup Ege",
+    picture: "pictures/HansURE.jpg",
+    subjects: ["dansk", "samfundsfag"],
+    height: 173,
+    lefthanded: false,
+    popularity: 10);
+final Helga = new Teacher(name: "Helga Schmidt Mikkelsen",
+    picture: "pictures/Helga.jpg",
+    subjects: ["filosofi", "idræt"],
+    height: 159,
+    lefthanded: false,
+    popularity: 4);
+final Henrik = new Teacher(name: "Henrik",
+    picture: "pictures/Henrik.jpg",
+    subjects: ["fransk"],
+    height: 181,
+    lefthanded: false,
+    popularity: 4);
+final HenrikBA = new Teacher(name: "Henrik Bank Andersen",
+    picture: "pictures/HenrikBA.jpg",
+    subjects: ["historie", "dansk"],
+    height: 187,
+    lefthanded: false,
+    popularity: 3);
+final Ina = new Teacher(name: "Ina Holst Rendboe",
+    picture: "pictures/Ina.jpg",
+    subjects: ["fysik", "matematik"],
+    height: 172,
+    lefthanded: false,
+    popularity: 9);
+final Ingrid = new Teacher(name: "Ingrid Beier Ommen",
+    picture: "pictures/Ingrid.jpg",
+    subjects: ["fysik", "matematik"],
+    height: 164,
+    lefthanded: false,
+    popularity: 9);
+final Irvin = new Teacher(name: "Irvin Silberling Svensson",
+    picture: "pictures/Irvin.jpg",
+    subjects: ["matematik"],
+    height: 176,
+    lefthanded: false,
+    popularity: 7);
+final Jakob = new Teacher(name: "Jakob Holm",
+    picture: "pictures/Jakob.jpg",
+    subjects: ["fysik", "kemi"],
+    height: 198,
+    lefthanded: false,
+    popularity: 5);
+final Jette = new Teacher(name: "Jette Schouborg Nielsen",
+    picture: "pictures/Jette.jpg",
+    subjects: ["kemi"],
+    height: 162,
+    lefthanded: false,
+    popularity: 8);
+final Justin = new Teacher(name: "Justin Bieber",
+    picture: "pictures/Justin.jpg",
+    subjects: ["engelsk", "musik", "mediefag"],
+    height: 195,
+    lefthanded: false,
+    popularity: 8);
+final Joergen = new Teacher(name: "Jørgen Bøge",
+    picture: "pictures/Joergen.jpg",
+    subjects: ["dansk", "engelsk"],
+    height: 197,
+    lefthanded: false,
+    popularity: 5);
+final Karin = new Teacher(name: "Karin Overballe",
+    picture: "pictures/Karin.jpg",
+    subjects: ["engelsk", "psykologi"],
+    height: 174,
+    lefthanded: false,
+    popularity: 8);
+final KatrineEP = new Teacher(name: "Katrine Egelund Pedersen",
+    picture: "pictures/KatrineEP.jpg",
+    subjects: ["biologi", "bioteknologi", "kemi"],
+    height: 169,
+    lefthanded: false,
+    popularity: 6);
+final KatrineLW = new Teacher(name: "Katrine Lodberg Wejse",
+    picture: "pictures/KatrineLW.jpg",
+    subjects: ["dansk", "religion"],
+    height: 164,
+    lefthanded: false,
+    popularity: 5);
+final KimK = new Teacher(name: "Kim Kjærgaard",
+    picture: "pictures/KimK.jpg",
+    subjects: ["engelsk", "historie"],
+    height: 177,
+    lefthanded: false,
+    popularity: 6);
+final KimSJ = new Teacher(name: "Kim Sung Jensen",
+    picture: "pictures/KimSJ.jpg",
+    subjects: ["historie", "kinesisk"],
+    height: 198,
+    lefthanded: false,
+    popularity: 3);
+final Kristina = new Teacher(name: "Kristina Andersen",
+    picture: "pictures/Kristina.jpg",
+    subjects: ["engelsk", "spansk"],
+    height: 163,
+    lefthanded: false,
+    popularity: 7);
+final KristineBR = new Teacher(name: "Kristine Birgitte Rasmussen",
+    picture: "pictures/KristineBR.jpg",
+    subjects: ["historie", "religion"],
+    height: 176,
+    lefthanded: false,
+    popularity: 10);
+final KristineM = new Teacher(name: "Kristine Maraldo",
+    picture: "pictures/KristineM.jpg",
+    subjects: ["biologi"],
+    height: 175,
+    lefthanded: false,
+    popularity: 2);
+final LarsKNL = new Teacher(name: "Lars Kr. Nørgaard Larsen",
+    picture: "pictures/LarsKNL.jpg",
+    subjects: ["geografi", "naturgeografi", "samfundsfag"],
+    height: 192,
+    lefthanded: false,
+    popularity: 4);
+final LarsLR = new Teacher(name: "Lars Løkke Rasmussen",
+    picture: "pictures/LarsLR.jpg",
+    subjects: ["dansk", "erhvervsøkonomi", "samfundsfag"],
+    height: 172,
+    lefthanded: false,
+    popularity: 10);
+final Lasse = new Teacher(name: "Lasse Hede",
+    picture: "pictures/Lasse.jpg",
+    subjects: ["idræt", "samfundsfag"],
+    height: 175,
+    lefthanded: false,
+    popularity: 7);
+final Lene = new Teacher(name: "Lene Sommer",
+    picture: "pictures/Lene.jpg",
+    subjects: ["idræt", "tysk"],
+    height: 165,
+    lefthanded: false,
+    popularity: 9);
+final Linda = new Teacher(name: "Linda Charlotte Heiede Laursen",
+    picture: "pictures/Linda.jpg",
+    subjects: ["engelsk"],
+    height: 167,
+    lefthanded: false,
+    popularity: 5);
+final Lis = new Teacher(name: "Lis Vivi Fonnesbæk Hansen",
+    picture: "pictures/Lis.jpg",
+    subjects: ["historie", "idræt"],
+    height: 162,
+    lefthanded: false,
+    popularity: 4);
+final Lisbeth = new Teacher(name: "Lisbeth Drasbech Hansen",
+    picture: "pictures/Lisbeth.jpg",
+    subjects: ["biologi"],
+    height: 160,
+    lefthanded: false,
+    popularity: 5);
+final Liv = new Teacher(name: "Liv Heegaard Bennike",
+    picture: "pictures/Liv.jpg",
+    subjects: ["samfundsfag", "spansk"],
+    height: 158,
+    lefthanded: false,
+    popularity: 5);
+final Lone = new Teacher(name: "Lone Sandholdt Jacobsen",
+    picture: "pictures/Lone.jpg",
+    subjects: ["arabisk", "religion", "samfundsfag"],
+    height: 170,
+    lefthanded: false,
+    popularity: 1);
+final Mads = new Teacher(name: "Mads Vestergaard",
+    picture: "pictures/Mads.jpg",
+    subjects: ["historie", "matematik"],
+    height: 172,
+    lefthanded: false,
+    popularity: 2);
+final MarianneDP = new Teacher(name: "Marianne Dahlerup Poulsen",
+    picture: "pictures/MarianneDP.jpg",
+    subjects: ["fysik", "matematik"],
+    height: 173,
+    lefthanded: false,
+    popularity: 10);
+final MarianneSH = new Teacher(name: "Marianne Stevnhoved Henriksen",
+    picture: "pictures/MarianneSH.jpg",
+    subjects: ["historie", "spansk"],
+    height: 166,
+    lefthanded: true,
+    popularity: 5);
+final MarianneV = new Teacher(name: "Marianne Vestergaard",
+    picture: "pictures/MarianneV.jpg",
+    subjects: ["matematik"],
+    height: 172,
+    lefthanded: false,
+    popularity: 4);
+final Merete = new Teacher(name: "Merete Søgaard",
+    picture: "pictures/Merete.jpg",
+    subjects: ["fransk", "oldtidskundskab", "tysk"],
+    height: 169,
+    lefthanded: false,
+    popularity: 2);
+final MetteE = new Teacher(name: "Mette Engberg",
+    picture: "pictures/MetteE.jpg",
+    subjects: ["engelsk", "billedkunst"],
+    height: 167,
+    lefthanded: false,
+    popularity: 10);
+final MetteHF = new Teacher(name: "Mette Hedegaard Fiedler",
+    picture: "pictures/MetteHF.jpg",
+    subjects: ["biologi", "bioteknologi", "kemi"],
+    height: 166,
+    lefthanded: false,
+    popularity: 10);
+final MortenSjS = new Teacher(name: "Morten Sjelborg-Sørensen",
+    picture: "pictures/MortenSjS.jpg",
+    subjects: ["religion", "idræt"],
+    height: 187,
+    lefthanded: false,
+    popularity: 6);
+final MortenSS = new Teacher(name: "Morten Søding Sørensen",
+    picture: "pictures/MortenSS.jpg",
+    subjects: ["idræt", "mediefag"],
+    height: 186,
+    lefthanded: false,
+    popularity: 7);
+final Ole = new Teacher(name: "Ole Schultz Larsen",
+    picture: "pictures/Ole.jpg",
+    subjects: ["dansk", "psykologi"],
+    height: 193,
+    lefthanded: false,
+    popularity: 9);
+final PernilleBS = new Teacher(name: "Pernille Bach Steffensen",
+    picture: "pictures/PernilleBS.jpg",
+    subjects: ["dansk", "samfundsfag"],
+    height: 180,
+    lefthanded: false,
+    popularity: 6);
+final PernilleHD = new Teacher(name: "Pernille Hoveroust Dupont",
+    picture: "pictures/PernilleHD.jpg",
+    subjects: ["fysik", "matematik"],
+    height: 167,
+    lefthanded: false,
+    popularity: 7);
+final RasmusBF = new Teacher(name: "Rasmus Bach Frandsen",
+    picture: "pictures/RasmusBF.jpg",
+    subjects: ["dansk", "historie"],
+    height: 185,
+    lefthanded: false,
+    popularity: 1);
+final RasmusE = new Teacher(name: "Rasmus Eriksen",
+    picture: "pictures/RasmusE.jpg",
+    subjects: ["historie", "samfundsfag"],
+    height: 182,
+    lefthanded: false,
+    popularity: 2);
+final Rie = new Teacher(name: "Rie Pedersen",
+    picture: "pictures/Rie.jpg",
+    subjects: ["dansk", "musik"],
+    height: 173,
+    lefthanded: false,
+    popularity: 1);
+final RikkeFC = new Teacher(name: "Rikke Frovin Crenzien",
+    picture: "pictures/RikkeFC.jpg",
+    subjects: ["biologi", "idræt"],
+    height: 180,
+    lefthanded: false,
+    popularity: 1);
+final RikkeRS = new Teacher(name: "Rikke Rosendal Schmidt",
+    picture: "pictures/RikkeRS.jpg",
+    subjects: ["dansk", "engelsk"],
+    height: 169,
+    lefthanded: false,
+    popularity: 3);
+final Sanne = new Teacher(name: "Sanne Fredsted",
+    picture: "pictures/Sanne.jpg",
+    subjects: ["dansk", "engelsk", "oldtidskundskab"],
+    height: 159,
+    lefthanded: false,
+    popularity: 5);
+final Sascha = new Teacher(name: "Sascha Kristiane Sandfeld Sørensen",
+    picture: "pictures/Sascha.jpg",
+    subjects: ["historie", "samfundsfag"],
+    height: 172,
+    lefthanded: false,
+    popularity: 3);
+final Sisse = new Teacher(name: "Sisse Storgaard",
+    picture: "pictures/Sisse.jpg",
+    subjects: ["dansk", "engelsk"],
+    height: 174,
+    lefthanded: false,
+    popularity: 3);
+final Solvejg = new Teacher(name: "Solvejg Basse-Richter",
+    picture: "pictures/Solvejg.jpg",
+    subjects: ["engelsk", "samfundsfag"],
+    height: 168,
+    lefthanded: false,
+    popularity: 4);
+final Steffen = new Teacher(name: "Steffen Pedersen",
+    picture: "pictures/Steffen.jpg",
+    subjects: ["kemi"],
+    height: 189,
+    lefthanded: false,
+    popularity: 1);
+final Stine = new Teacher(name: "Stine Lykke Olsen",
+    picture: "pictures/Stine.jpg",
+    subjects: ["kinesisk"],
+    height: 168,
+    lefthanded: false,
+    popularity: 4);
+final Soeren = new Teacher(name: "Søren Rørdam Bastholm",
+    picture: "pictures/Soeren.jpg",
+    subjects: ["engelsk", "mediefag"],
+    height: 179,
+    lefthanded: true,
+    popularity: 8);
+final Terese = new Teacher(name: "Terese Damhøj Andersen",
+    picture: "pictures/Terese.jpg",
+    subjects: ["matematik"],
+    height: 158,
+    lefthanded: false,
+    popularity: 8);
+final ThomasB = new Teacher(name: "Thomas Back",
+    picture: "pictures/ThomasB.jpg",
+    subjects: ["engelsk", "tysk"],
+    height: 171,
+    lefthanded: false,
+    popularity: 7);
+final ThomasKI = new Teacher(name: "Thomas Kølsen Iversen",
+    picture: "pictures/ThomasKI.jpg",
+    subjects: ["dansk", "engelsk"],
+    height: 174,
+    lefthanded: false,
+    popularity: 5);
+final Tine = new Teacher(name: "Tine Ørum Secher",
+    picture: "pictures/Tine.jpg",
+    subjects: ["kulturforståelse", "religion"],
+    height: 165,
+    lefthanded: false,
+    popularity: 1);
+final Ulla = new Teacher(name: "Ulla Birgitte Alkjærsig",
+    picture: "pictures/Ulla.jpg",
+    subjects: ["dansk", "spansk"],
+    height: 170,
+    lefthanded: false,
+    popularity: 4);
+
+final List<Teacher> teachersMale = <Teacher>[
+    Axel,
+    Benny,
+    Birger,
+    Bjarne,
+    Claus,
+    David,
+    HansOS,
+    HansSJ,
+    HansURE,
+    Henrik,
+    HenrikBA,
+    Irvin,
+    Jakob,
+    Joergen,
+    Justin,
+    KimK,
+    KimSJ,
+    LarsKNL,
+    LarsLR,
+    Lasse,
+    Mads,
+    MortenSjS,
+    MortenSS,
+    Ole,
+    RasmusBF,
+    RasmusE,
+    Steffen,
+    Soeren,
+    ThomasB,
+    ThomasKI,
+];
+
+final List<Teacher> teachersFemale = <Teacher>[
+    Ane,
+    Anette,
+    AnneG,
+    AnneM,
+    AnneTS,
+    Astrid,
+    Birgit,
+    Birgitte,
+    Boline,
+    Britta,
+    ChristinaB,
+    ChristinaTE,
+    Ditte,
+    Ellen,
+    GitteAO,
+    GitteJ,
+    HanneAI,
+    HanneOI,
+    Helga,
+    Ina,
+    Ingrid,
+    Jette,
+    Karin,
+    KatrineEP,
+    KatrineLW,
+    Kristina,
+    KristineBR,
+    KristineM,
+    Lene,
+    Linda,
+    Lis,
+    Lisbeth,
+    Liv,
+    Lone,
+    MarianneDP,
+    MarianneSH,
+    MarianneV,
+    Merete,
+    MetteE,
+    MetteHF,
+    PernilleBS,
+    PernilleHD,
+    Rie,
+    RikkeFC,
+    RikkeRS,
+    Sanne,
+    Sascha,
+    Sisse,
+    Solvejg,
+    Stine,
+    Terese,
+    Tine,
+    Ulla,
+];
+
+final Set<Teacher> teachersAll = new Set<Teacher>()
+    ..addAll(teachersMale)
+    ..addAll(teachersFemale);

@@ -1,0 +1,10 @@
+name: gdis
+description: GDIS'18 codelab
+version: 0.0.1
+
+environment:
+  sdk: '>=1.20.1 <2.0.0'
+
+dev_dependencies:
+  build_runner: ^0.8.2
+  build_web_compilers: '>=0.3.6 <0.5.0'
