@@ -113,13 +113,18 @@ algorithm3() {
 }
 
 algorithm4() {
+  withErrorHandling(highlightFirstDressAndFriends);
+  visualize();
+}
+
+algorithm5() {
   withErrorHandling(() {
     withAutos(maxPairing);
   });
   visualize();
 }
 
-algorithm5() {
+algorithm6() {
   withErrorHandling(naiveMaxPairing);
   visualize();
 }

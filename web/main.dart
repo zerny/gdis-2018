@@ -24,6 +24,7 @@ final algorithms = [
   algorithm3,
   algorithm4,
   algorithm5,
+  algorithm6,
 ];
 
 Timer _timer;

@@ -51,12 +51,6 @@ undo() {
   _isUnOrRedoing = false;
 }
 
-int get redoCount => _redoStack.length;
-int get undoCount => _undoStack.length;
-
-bool get canRedo => _redoStack.isNotEmpty;
-bool get canUndo => _undoStack.isNotEmpty;
-
 redo() {
   final DanceGraphCommand command = _redoStack.removeLast();
   _isUnOrRedoing = true;
@@ -64,6 +58,12 @@ redo() {
   _undoStack.add(command);
   _isUnOrRedoing = false;
 }
+
+int get redoCount => _redoStack.length;
+int get undoCount => _undoStack.length;
+
+bool get canRedo => _redoStack.isNotEmpty;
+bool get canUndo => _undoStack.isNotEmpty;
 
 /// Inverts each edge of the `chain`, then clears `chain` and resets the
 /// `graph` markings.
@@ -137,6 +137,16 @@ void unmark(Dancer dancer) {
 /// Highlights the `dancer`.
 void highlight(Dancer dancer) {
   dancer.highlight();
+}
+
+/// Returns whether the `dancer` is highlighted.
+bool isHighlighted(Dancer dancer) {
+  return dancer.isHighlighted;
+}
+
+/// Returns whether the `dancer` is not highlighted.
+bool isNotHighlighted(Dancer dancer) {
+  return !dancer.isHighlighted;
 }
 
 /// Lowlights the `dancer`.

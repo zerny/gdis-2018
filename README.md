@@ -84,12 +84,12 @@ maxPairing(graph):
 Efficiency concerns will often lead us to prefer one algorithm over another one. We'll
 look at the relative efficiency of our two algorithms and talk about exponential (2ⁿ)
 vs polynomial (n²) growth.
-
+
 ### Programming: implementing the solution
 
-We'll do some warm-up exercises (numbered 1 through 5) to familiarize ourselves with
+We'll do some warm-up exercises (numbered 1 through 6) to familiarize ourselves with
 programming graph algorithms with suits and dresses. Then we'll implement a core part
-("graph has chain") of the more efficient algorithm above as exercises 6 and 7.
+("graph has chain") of the more efficient algorithm above as exercises 7 and 8.
 
 Participants will be given a paper listing of the exercises and the available graph
 operations and queries. Everything will be based on top-level functions implemented
@@ -108,20 +108,20 @@ Solutions to the exercises are available on request.
 
 ### Notes on max pairing exercises
 
-For the max pairing exercise (6), the provided backing code (which the participants do
+For the max pairing exercise (7), the provided backing code (which the participants do
 not have to see) handles chain collection as a side effect of calling
 `dressesAvailableFor` and `suitPairedWith` and their symmetric graph-navigating
 functions. The same goes for marking graph nodes to avoid visiting the same node twice.
 
 *Alert! This means that calling the `dressesAvailableFor` or `suitsAvailableFor`
-functions twice in your solution to Exercise 6 with the same argument will return
+functions twice in your solution to Exercise 7 with the same argument will return
 an empty iterable on the second call, because then the connected dresses and suits
 will have already been visited!*
 
 Chain and markings are cleared as a side effect of calling `invertChain`.
 
-The final "stretch" exercise (7) asks participants to let go of these training wheels,
-and redo exercise 6 while implementing chain collection and/or graph markings
+The final "stretch" exercise (8) asks participants to let go of these training wheels,
+and redo exercise 7 while implementing chain collection and/or graph markings
 themselves. The automated side-effects are turned off by setting one or both the two
 global flags (`collectChain`, `markVisited`) to false at the top of the `gdis.dart`
 file.
@@ -226,9 +226,37 @@ highlightRivalsOfFirstDress() {
   // your code here
 }
 ```
-I kan kopiere koden øverst på siden og bytte om på rollerne.  
+I kan kopiere koden øverst på siden og bytte om på rollerne.
 Afprøv jeres løsning.
-
+
+### Venner
+Lad os sige, at man er venner med alle de dansere, man er forbundet til i grafen, enten direkte eller indirekte. Her er noget kode til at fremhæve den første kjole-knude i grafen og alle vennerne:
+
+```dart
+highlightFirstDressAndFriends() {
+  highlightDressAndFriends(firstDress);
+}
+
+
+/// Highlight the given dress and all friends, if not already done.
+highlightDressAndFriends(dress) {
+  if (isNotHighlighted(dress)) {
+    highlight(dress);
+    for (var suit in suitsAvailableFor(dress)) {
+      // your code here
+    }
+  }
+}
+
+/// Highlight the given suit and all friends, if not already done.
+highlightSuitAndFriends(suit) {
+  // your code here
+}
+```
+`isNotHighlighted(x)` er sand, hvis knuden x ikke er fremhævet.
+
+**Opgave 6** Færdiggør koden ovenfor. Afprøv jeres løsning.
+
 ### Maksimal parring
 
 OK, lad os så finde en maksimal parring! Algoritmen fra tidligere på dagen ser
@@ -266,10 +294,10 @@ nogle eksempler og klik gennem de enkelte graf-ændringer, den foretager.
 (I tilfælde af, at I undrer jer over, hvordan vi opsamler og husker skiftevejen,
 så vi kan vende den bagefter: Vi gør det bag om ryggen på jer, som en del af
 søgningen. Det samme gælder markering af knuder, således at vi undgår at
-behandle den samme knude mere end én gang. I opgave 7 skal I håndtere begge dele
-selv.)
+behandle den samme knude mere end én gang. I opgave 8 skal I håndtere begge dele
+selv.)
 
-**Opgave 6** Skriv `canFindUnpairedDressFrom` selv, idet I genbruger strukturen
+**Opgave 7** Skriv `canFindUnpairedDressFrom` selv, idet I genbruger strukturen
 af `canFindChain`. Her er nogle brikker til puslespillet (I skal ikke bruge dem
 alle sammen):
 
@@ -281,7 +309,7 @@ alle sammen):
 
 De sidste to virker kun, hvis x er med i et dansepar.
 
-**Opgave 7** (til de meget hurtige) Få jeres vejleder til at fjerne
+**Opgave 8** (til de meget hurtige) Få jeres vejleder til at fjerne
 støttehjulene, så I selv skal håndtere opsamling af skiftevej og/eller markering
 af behandlede knuder. Og skriv så `canFindUnpairedDressFrom` igen.
 

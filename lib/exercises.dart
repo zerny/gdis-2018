@@ -34,8 +34,29 @@ highlightRivalsOfFirstDress() {
   // your code here
 }
 
-
 // Exercise 6
+
+highlightFirstDressAndFriends() {
+  highlightDressAndFriends(firstDress);
+}
+
+
+/// Highlight the given dress and all friends, if not already done.
+highlightDressAndFriends(dress) {
+  if (isNotHighlighted(dress)) {
+    highlight(dress);
+    for (var suit in suitsAvailableFor(dress)) {
+      // your code here
+    }
+  }
+}
+
+/// Highlight the given suit and all friends, if not already done.
+highlightSuitAndFriends(suit) {
+  // your code here
+}
+
+// Exercises 7 and 8
 
 maxPairing() {
   while (canFindChain()) {
