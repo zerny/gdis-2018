@@ -4,13 +4,18 @@ This repository contains the code for the codelab for GDIS'18 hosted at Google
 in Aarhus. TA introduction is available below, in English. Exercise sheet and
 user interface are currently available in Danish only.
 
-To try out the codelab, install Dart 2 (https://www.dartlang.org/) and use its
-`webdev` tool to launch a web server:
+To try out the codelab, install Dart 2 (https://www.dartlang.org/) and activate
+its `webdev` tool:
 ```
+$ pub global activate webdev
 $ cd gdis-2018
+$ pub get
+```
+Then launch a local web server:
+```
 $ webdev serve
 ```
-Then navigate your browser to localhost:8080. Make code changes to
+Now you can navigate your browser to localhost:8080. Make code changes to
 `gdis-2018/lib/exercises.dart` to solve the exercises set below.
 
 ## TA introduction
